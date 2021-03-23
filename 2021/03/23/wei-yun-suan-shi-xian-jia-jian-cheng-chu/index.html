@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Liuhjhj的博客">
+    <meta name="keywords" content="Liuhjhj的博客">
     <meta name="description" content="学习如逆水行舟,不进则退">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | Liuhjhj的博客</title>
+    <title>Liuhjhj的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -102,17 +102,6 @@
       <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
       <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
     </a>
     
   </li>
@@ -211,17 +200,6 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
 		<a href="/friends" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-address-book"></i>
@@ -310,12 +288,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -464,19 +442,36 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title: 位运算实现加减乘除</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>这是一篇关于位运算实现加减乘除的博客</p>
+<h2 id="位运算实现加减乘除"><a href="#位运算实现加减乘除" class="headerlink" title="位运算实现加减乘除"></a>位运算实现加减乘除</h2><h3 id="加法（加法器原理）"><a href="#加法（加法器原理）" class="headerlink" title="加法（加法器原理）"></a>加法（加法器原理）</h3><p>不考虑进位：位异或操作 <strong>sum=a^b</strong></p>
+<p>只考虑进位：位与操作再左移一位 <strong>carry=(a&amp;b)&lt;&lt;1</strong></p>
+<p>循环将sum和carry相加，直到carry（进位）为0</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add_recursion</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (b == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> sum = a^b; <span class="comment">//异或</span></span><br><span class="line">    <span class="keyword">int</span> carry = (a&amp;b) &lt;&lt; <span class="number">1</span>; <span class="comment">//与</span></span><br><span class="line">    <span class="keyword">return</span> add(sum,carry);  <span class="comment">//递归</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = a^b;</span><br><span class="line">    <span class="keyword">int</span> carry = (a&amp;b) &lt;&lt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (carry != <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> tmp_sum = sum;</span><br><span class="line">        <span class="keyword">int</span> tmp_carry = carry;</span><br><span class="line">        sum = tmp_sum^tmp_carry;</span><br><span class="line">        carry = (tmp_sum&amp;tmp_carry)&lt;&lt;<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3 id="减法"><a href="#减法" class="headerlink" title="减法"></a>减法</h3><p>减法变加法</p>
+<p>取反：位反再+1</p>
+<p>再使用加法原理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subtract</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    b = add(~b,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> add(a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h3><p>先计算乘法的绝对值，再判断符号</p>
+<p>思路跟平时做乘法打草稿是一样的</p>
+<p>任何数位与1等于末尾的二进制数（<strong>奇数&amp;1=1,偶数&amp;1=0</strong>）</p>
+<p>判断符号：<strong>正数^负数=负数</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">multiply</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> multiplier = a&lt;<span class="number">0</span>? add(~a,<span class="number">1</span>):a;	<span class="comment">//取绝对值</span></span><br><span class="line">    <span class="keyword">int</span> multiplicand = b&lt;<span class="number">0</span>? add(~b,<span class="number">1</span>):b;	<span class="comment">//取绝对值</span></span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (multiplicand&gt;<span class="number">0</span>)&#123;	<span class="comment">//末尾为1相加,末尾为0什么都不做,思路类似于打草稿计算乘法</span></span><br><span class="line">        <span class="keyword">if</span> ((multiplicand &amp; <span class="number">1</span>)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            result+=multiplier;</span><br><span class="line">        &#125;</span><br><span class="line">        multiplicand&gt;&gt;=<span class="number">1</span>;	<span class="comment">//左移1位</span></span><br><span class="line">        multiplier&lt;&lt;=<span class="number">1</span>;	<span class="comment">//右移1位</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ((a^b)&lt;<span class="number">0</span>)	<span class="comment">//判断乘法的符号</span></span><br><span class="line">        result = add(~result,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h3><p>类似于打草稿的思路：被除数每次减去2^n倍的除数,并将商累加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dividend = a&lt;<span class="number">0</span>? add(~a,<span class="number">1</span>):a;    <span class="comment">//被除数</span></span><br><span class="line">    <span class="keyword">int</span> divisor = b&lt;<span class="number">0</span>? add(~b,<span class="number">1</span>):b; <span class="comment">//除数</span></span><br><span class="line">    <span class="keyword">int</span> quotient = <span class="number">0</span>;   <span class="comment">//商</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">31</span>;i&gt;=<span class="number">0</span>;i--)&#123;    <span class="comment">//int最大位数为32位</span></span><br><span class="line">        <span class="comment">//除数右移有溢出风险,因此用被除数左移来代替(除数从0位开始右移-&gt;被除数右移31位开始)</span></span><br><span class="line">        <span class="keyword">if</span> ((dividend&gt;&gt;i)&gt;=divisor)&#123;</span><br><span class="line">            quotient = add(quotient,<span class="number">1</span>&lt;&lt;i);  <span class="comment">//商相加</span></span><br><span class="line">            dividend = subtract(dividend,divisor&lt;&lt;i);   <span class="comment">//用被除数循环减去2^i倍的除数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ((a^b)&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        quotient = add(~quotient,<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> quotient;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
                 
             </div>
@@ -503,7 +498,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liuhjhj.github.io/2021/03/23/hello-world/">https://liuhjhj.github.io/2021/03/23/hello-world/</a>
+                    <a href="https://liuhjhj.github.io/2021/03/23/wei-yun-suan-shi-xian-jia-jian-cheng-chu/">https://liuhjhj.github.io/2021/03/23/wei-yun-suan-shi-xian-jia-jian-cheng-chu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -715,13 +710,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/03/23/hello-world/">
+                <a href="/2021/03/23/wei-yun-suan-shi-xian-jia-jian-cheng-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -753,13 +748,13 @@
                 本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/23/hello-world/">
+                <a href="/2021/03/23/wei-yun-suan-shi-xian-jia-jian-cheng-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -971,9 +966,9 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2021</span>
             
-            <span id="year">2019</span>
+            <span id="year">2021</span>
             <a href="/about" target="_blank">liuhjhj</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1001,13 +996,13 @@
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/liuhjhj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:liuhjhj@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1017,13 +1012,17 @@
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2445342557" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2445342557" data-position="top" data-delay="50">
         <i class="fab fa-qq"></i>
     </a>
 
 
 
 
+
+    <a href="https://www.zhihu.com/people/du-ying-lan-shan-51-23" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/du-ying-lan-shan-51-23" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
 
 
 
